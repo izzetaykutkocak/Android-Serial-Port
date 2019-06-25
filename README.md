@@ -1,36 +1,35 @@
 ## Android-Serial-Port
-安卓串口通讯，基于google官方编译，方便以后使用。
+Android serial communication, based on google official compilation, convenient for future use.
 
-## 说明library
+## Description library
 * libs
-各类cpu架构对应的so文件
+Libs so files corresponding to various cpu architectures
 
 * src/main/android_serialport_api
-一些控制类和打开关闭串口的操作
+Some control classes and operations to turn off the serial port
 
 * ByteUtil
-工具类，字节转string
+tool class, byte to string
 
 * CRC16Verify
-crc16校验算法
+crc16 check algorithm
 
 * BCCVerify
-bcc异或校验
+bcc XOR check
 
 * OnDataReceiverListener
-接受到回复后的回调监听
+receives callback listener after reply
 
-## 使用
-1、将library作为依赖导入
-
-2、如果使用时报错缺少so，请将so文件复制到libs下，并配置
+## Usage
+1、import the library as a dependency
+2、If the error is missing due to use, copy the so file to libs and configure it.
 ```
  sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
         }
 ```
-3、在module 的build.gradle中添加
+3、add in the module's build.gradle
 
 ```
 dependencies {
@@ -38,27 +37,27 @@ dependencies {
 }
 ```
 ### SerialPort
-串口操作类，对应jni方法。用于串口打开关闭，获取输入输出流，通过输入输出流发送报文和获取响应报文。
+Serial port operation class, corresponding to the jni method. It is used to open and close the serial port, obtain input and output streams, send messages through input and output streams, and obtain response messages.
 
 
 ### SerialPortController
-控制类，打开关闭串口，发送接受报文
+Control class, open and close the serial port, send the acceptance message
 
-一般写成单例，在App中打开或关闭串口，不需要频繁的打开关闭
+Generally written as a singleton, open or close the serial port in the App, do not need to open and close frequently
 ```
 public SerialPortController(String devName, int baudRate) 构造方法(串口设备名，波特率)
 
-boolean openCOM()  打开串口
+boolean openCOM()  open the serial port
 
-void setOnDataReceiverListener(OnDataReceiverListener onDataReceiverListener) 设置监听，接收回复的报文及数据长度
+void setOnDataReceiverListener(OnDataReceiverListener onDataReceiverListener) Sets the listener, receives the reply message and the data length
 
-void closeCOM() 关闭串口
+void closeCOM() closes the serial port
 
-boolean sendCMD(byte[] data) 发送报文
+boolean sendCMD(byte[] data) Sends a message
 ```
-### SerialFinder 可不使用
-串口操作类
-枚举所有设备串口
+### SerialFinder 
+can be used
+Serial port operation class enumerates all device serial ports
 
 ## License
 Apache2.0
