@@ -45,7 +45,7 @@ Control class, open and close the serial port, send the acceptance message
 
 Generally written as a singleton, open or close the serial port in the App, do not need to open and close frequently
 ```
-public SerialPortController(String devName, int baudRate) 构造方法(串口设备名，波特率)
+public SerialPortController(String devName, int baudRate) Constructor (serial device name, baud rate)
 
 boolean openCOM()  open the serial port
 
